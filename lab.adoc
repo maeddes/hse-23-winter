@@ -1,7 +1,6 @@
 = Lab Summary
 
-image::pics//big_picture_project.png[lab big picture/idea]
-
+image::https://github.com/maeddes/hse-2022-summer/blob/main/pics/big_picture_project.png[Big Pciture]
 
 == Todo List Application
 
