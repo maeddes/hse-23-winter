@@ -38,7 +38,7 @@ public class DemoApplication {
 
 	// RMM Level 2 
 	// Introduce Verbs
-	@GetMapping("/todos")
+	@GetMapping("/todosold")
 	public ArrayList<Todo> getAllTodoItemsByVerb(){
 		return todoItems;
 	}

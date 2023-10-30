@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,15 @@ public class TodoController {
 
     @Autowired
     private TodoRepository todoRepository;
+
+    @GetMapping("/todos")
+    public ResponseEntity<List<Todo>> getAllTodos() {
+        List<Todo> todoList = todoRepository.findAll();
+        if (!todoList.isEmpty()) {
+            return ResponseEntity.ok(todoList);
+        }
+        return ResponseEntity.notFound().build();
+    }
 
     @GetMapping("/todos/{id}")
 	public ResponseEntity<Todo> getTodoById(@PathVariable Integer id){
