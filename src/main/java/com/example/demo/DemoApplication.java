@@ -44,44 +44,7 @@ public class DemoApplication {
 	}
 
 	
-	@GetMapping("/todos/{id}")
-	public ResponseEntity<Todo> getTodoById(@PathVariable Integer id){
-		var todoItem = todoItems.stream().filter(item -> item.id.equals(id)).findFirst().orElse(null);
-		if(todoItem != null){
-			return ResponseEntity.ok(todoItem);
-		}
-		return ResponseEntity.notFound().build();
-		
-	}
 
-	@PostMapping("/todos/{id}")
-	public ResponseEntity<Todo> CreateTodo(@PathVariable Integer id){
-		var item = new Todo();
-		item.id = id;
-		todoItems.add(item);
-		return ResponseEntity.status(HttpStatus.CREATED).body(item);
-	}
-
-	@PutMapping("/todos/{id}/{title}")
-	ResponseEntity<Todo> UpdateTodo(@PathVariable Integer id, @PathVariable String title){
-		var existingItem = todoItems.stream().filter(item -> item.id.equals(id)).findFirst().orElse(null);
-		if(existingItem != null){
-			existingItem.title = title;
-			return ResponseEntity.status(HttpStatus.OK).body(existingItem);
-		}
-		return ResponseEntity.notFound().build();
-	}
-
-	@DeleteMapping("/todos/{id}")
-	ResponseEntity<Todo> DeleteTodo(@PathVariable Integer id){
-		for(Todo item: todoItems){
-			if(item.id.equals(id)){
-				todoItems.remove(item);
-				return ResponseEntity.status(HttpStatus.OK).body(item);
-			}
-		}
-		return ResponseEntity.notFound().build();
-	}
 
 	@GetMapping("/")
 	public String hello() {
