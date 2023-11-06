@@ -14,7 +14,7 @@ services:
   spring-app:
     image: test-java:v0.1
     build:
-      context: ./your-spring-app-directory
+      context: .
       dockerfile: Dockerfile
     container_name: your-spring-app-container
     ports:
