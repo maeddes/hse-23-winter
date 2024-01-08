@@ -26,6 +26,7 @@ public class DemoApplication {
 	// Swamp of POX apporach to get all todos
 	@GetMapping("/getAllTodoItems")
 	public ArrayList<Todo> getAllTodoItems(){
+		System.out.println("Hello");
 		return todoItems;
 	}
 
