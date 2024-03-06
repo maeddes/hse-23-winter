@@ -11,7 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 public class TodoController {
@@ -37,6 +43,12 @@ public class TodoController {
         return ResponseEntity.notFound().build();
 	}
 
+    @Operation(summary = "Creates a Todo Item with path variable name")
+    @ApiResponses(value = 
+    {
+        @ApiResponse(responseCode = "201", description = "Item has been created" , content = @Content)
+    })
+    @ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("/todos/{title}")
 	public ResponseEntity<Todo> CreateTodo(@PathVariable String title){
 		var item = new Todo();
